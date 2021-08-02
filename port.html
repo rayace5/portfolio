@@ -285,7 +285,50 @@
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 	<script>
-			var _0x4f23=['#navb','attr','height','Counter','swing','top','css','prop','each','append','addEventListener','width','ceil','animate','phone','scroll','init','data-percent','parent','getElementById','scrollHeight','-150px','<span\x20class=\x22count\x22></span>','50%','Exp','#header'];(function(_0x2fe45e,_0x4f238e){var _0xdc038e=function(_0x4d40ac){while(--_0x4d40ac){_0x2fe45e['push'](_0x2fe45e['shift']());}};_0xdc038e(++_0x4f238e);}(_0x4f23,0x12d));var _0xdc03=function(_0x2fe45e,_0x4f238e){_0x2fe45e=_0x2fe45e-0x0;var _0xdc038e=_0x4f23[_0x2fe45e];return _0xdc038e;};function Scroll(){var _0x186772=window['pageYOffset'];var _0xfb5092=$(_0xdc03('0xa'));var _0x4d6445=$(_0xdc03('0xb'));var _0x2b0d19=document['getElementById'](_0xdc03('0x9'));var _0x11d48c=_0x2b0d19[_0xdc03('0x5')];var _0x1a37f3=_0xfb5092[_0xdc03('0xd')]()+_0x4d6445[_0xdc03('0xd')]();if(_0x186772>0x384){setTimeout(function _0x2ff569(){$('.skills')[_0xdc03('0x13')](function(_0x423cd3){var _0x5cb294=$(this);$(this)[_0xdc03('0x14')](_0xdc03('0x7'));setTimeout(function(){_0x5cb294[_0xdc03('0x11')](_0xdc03('0x16'),_0x5cb294[_0xdc03('0xc')](_0xdc03('0x2')));},_0x423cd3*0x64);});$('.count')['each'](function(){$(this)[_0xdc03('0x12')](_0xdc03('0xe'),0x0)[_0xdc03('0x18')]({'Counter':$(this)[_0xdc03('0x3')]('.skills')[_0xdc03('0xc')](_0xdc03('0x2'))},{'duration':0x7d0,'easing':_0xdc03('0xf'),'step':function(_0x282067){$(this)['text'](Math[_0xdc03('0x17')](_0x282067)+'%');}});});},0x1f4);}if(_0x186772>0x1f4){document[_0xdc03('0x4')]('icons')['style'][_0xdc03('0x10')]=_0xdc03('0x8');}if(_0x186772<0x1f4){document['getElementById']('icons')['style'][_0xdc03('0x10')]=_0xdc03('0x6');}}window[_0xdc03('0x15')](_0xdc03('0x0'),Scroll);AOS[_0xdc03('0x1')]({'duration':0x4b0,'disable':_0xdc03('0x19')});
+				function Scroll(){
+			var ypos = window.pageYOffset;
+			var $head = $("#header");
+			var $navb = $("#navb");
+			var x = document.getElementById("Exp");
+			var y = x.scrollHeight;
+			var total = $head.height()+$navb.height();
+			if (ypos>900){
+				setTimeout(function start (){								
+					$('.skills').each(function(i){  
+						var $skills = $(this);
+						$(this).append('<span class="count"></span>')
+						setTimeout(function(){
+							$skills.css('width', $skills.attr('data-percent'));      
+						}, i*100);
+					});
+					$('.count').each(function () {
+						$(this).prop('Counter',0).animate({
+							Counter: $(this).parent('.skills').attr('data-percent')
+						}, {
+							duration: 2000,
+							easing: 'swing',
+							step: function (now) {
+								$(this).text(Math.ceil(now) +'%');
+							}
+						});
+					});  
+				},500)
+			}
+
+			if(ypos>500){
+				document.getElementById("icons").style.top = "50%";
+			}
+			if(ypos<500){
+				document.getElementById("icons").style.top = "-150px";
+			}
+		}
+// // Capture scroll events
+window.addEventListener("scroll",Scroll);
+
+AOS.init({
+	duration: 1200,
+	disable: 'phone'
+})
 </script>
 </body>
 </html>
